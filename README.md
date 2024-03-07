@@ -106,8 +106,6 @@ Consider Azure reservations to bring down costs of Azure VM Compute
 # ToDo
 Verify sensible defaults for psql SKU
 
-https://github.com/bjorgvin-sigurdsson/smb-xroad-securityserver-is
-
 TF started supporting total_retention_in_days in the latest version \
 But doesn't support the full range \
 https://github.com/hashicorp/terraform-provider-azurerm/issues/24860
