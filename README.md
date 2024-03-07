@@ -7,7 +7,7 @@ Later on you can run these commands again from the same machine using "both" as 
 ## Architecture drawing
 The following shows the end product in Azure of a full deployment for both dev/prd.
 
-<img src="xroad_ss_deployment.png" width="1024" />
+<img src="xroad_ss_deployment.svg" width="1024" />
 
 ## Resource sizing
 The modules defaults provide for very modest compute and database resources. 
