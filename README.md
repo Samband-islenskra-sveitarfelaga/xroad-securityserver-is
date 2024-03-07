@@ -117,7 +117,7 @@ xroad VM spec recommendations: \
 vCPU 2-8 \
 mem 4-16
 
-Ubuntu automatic updates are configured to allow for automatic restarts at 0400 in the event of a security patch requiring a kernel update
+Ubuntu automatic updates are configured to allow for automatic restarts at 0400 in the event of a security patch requiring a kernel update \
 This can be overriden using the automatic_update_reboot_time parameter.
 
 See variables.tf for other overridable defaults
