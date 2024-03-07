@@ -106,8 +106,6 @@ Consider Azure reservations to bring down costs of Azure VM Compute
 # ToDo
 Verify sensible defaults for psql SKU
 
-https://github.com/bjorgvin-sigurdsson/smb-xroad-securityserver-is
-
 TF started supporting total_retention_in_days in the latest version \
 But doesn't support the full range \
 https://github.com/hashicorp/terraform-provider-azurerm/issues/24860
@@ -117,7 +115,7 @@ xroad VM spec recommendations: \
 vCPU 2-8 \
 mem 4-16
 
-Ubuntu automatic updates are configured to allow for automatic restarts at 0400 in the event of a security patch requiring a kernel update
+Ubuntu automatic updates are configured to allow for automatic restarts at 0400 in the event of a security patch requiring a kernel update \
 This can be overriden using the automatic_update_reboot_time parameter.
 
 See variables.tf for other overridable defaults
