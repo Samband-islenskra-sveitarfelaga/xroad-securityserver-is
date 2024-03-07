@@ -4,6 +4,11 @@ This repository is intended to get you up and running with an Icelandic X-Road S
 Executing the Azure CLI commands under Deploy in a PowerShell will create a development environment for X-Road in your cloud environment. \
 Later on you can run these commands again from the same machine using "both" as your deployment_type to add the production servers.
 
+## Architecture drawing
+The following shows the end product in Azure of a full deployment for both dev/prd.
+
+<img src="xroad_ss_deployment.png" width="1024" />
+
 ## Resource sizing
 The modules defaults provide for very modest compute and database resources. 
 Scale-up as appropriate.
@@ -31,7 +36,7 @@ https://docs.devland.is/products/x-road/x-road-security-server-installation-and-
 
 # Deploy
 Example assumes PowerShell Core \
-Make sure to replace all variable values as applicable
+Make sure to replace all variable values as applicable (and see variables.tf in the repository root for additional options)
 
 
 ```powershell
@@ -88,8 +93,6 @@ terraform apply `
   -var="actiongroup_email=$actiongroup_email"
 ```
 
-Follow this up by configuring a window to allow for restarts when Ubuntu's automatic updates require them.
-
 # X-Road Server post-install
 After the deploy step, you will be at this step in the island.is docs \
 https://docs.devland.is/products/x-road/x-road-security-server-installation-and-registration-steps#registration-email-for-security-server-to-central-example
@@ -101,16 +104,23 @@ https://github.com/digitaliceland/Straumurinn?tab=readme-ov-file#getting-started
 Consider Azure reservations to bring down costs of Azure VM Compute
 
 # ToDo
-Verify sensible defaults for psql SKU \
-xroad VM spec recommendations: \
-vCPU 2-8 \
-mem 4-16
+Verify sensible defaults for psql SKU
 
 https://github.com/bjorgvin-sigurdsson/smb-xroad-securityserver-is
 
 TF started supporting total_retention_in_days in the latest version \
 But doesn't support the full range \
 https://github.com/hashicorp/terraform-provider-azurerm/issues/24860
+
+## Other
+xroad VM spec recommendations: \
+vCPU 2-8 \
+mem 4-16
+
+Ubuntu automatic updates are configured to allow for automatic restarts at 0400 in the event of a security patch requiring a kernel update
+This can be overriden using the automatic_update_reboot_time parameter.
+
+See variables.tf for other overridable defaults
 
 # Env specific
 ## Production

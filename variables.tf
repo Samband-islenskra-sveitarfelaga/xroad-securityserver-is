@@ -103,5 +103,5 @@ variable "actiongroup_email" {
 variable "automatic_update_reboot_time" {
   type = string
   default = "04:00"
-  description = "In the edge case of a security update requiring reboot (kernel udpates), at what time to allow?"
+  description = "In the edge case of a security update requiring reboot (kernel updates), at what time to allow?"
 }
