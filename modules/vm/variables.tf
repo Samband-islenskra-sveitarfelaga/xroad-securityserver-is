@@ -49,6 +49,7 @@ variable "ssh_pubkey" {
 
 variable "vm_password" {
   type        = string
+  sensitive = true
 }
 
 variable "firewall_whitelist" {
@@ -81,9 +82,11 @@ variable "psql_fqdn" {
 
 variable "psql_password" {
   type = string
+  sensitive = true
 }
 variable "xrd_webadmin_password" {
   type = string
+  sensitive = true
 }
 variable "data_collection_rule_id" {
   type = string

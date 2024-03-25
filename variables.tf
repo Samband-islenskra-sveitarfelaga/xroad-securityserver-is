@@ -35,6 +35,7 @@ variable "location" {
 
 variable "psql_password" {
   type = string
+  sensitive = true
 }
 
 variable "vnetDevAddressPrefix" {
@@ -66,6 +67,7 @@ variable "psqlPrdSubnetAddressPrefix" {
 
 variable "xrd_webadmin_password" {
   type = string
+  sensitive = true
   description = "Password for the xroad web administration user. Username xrd."
 }
 
@@ -83,6 +85,7 @@ variable "vm_password" {
   type        = string
   description = "alternative to ssh pubkey authentication"
   default     = null
+  sensitive = true
 }
 
 variable "firewall_whitelist" {
