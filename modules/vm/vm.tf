@@ -1,9 +1,11 @@
 resource "azurerm_public_ip" "pip" {
-  name                = "pip-xroad-securityserver-${var.zone}-${var.env}"
+  # name                = "pip-xroad-securityserver-${var.zone}-${var.env}"
+  name                = "pip-xroad-securityserver-${var.env}"
   resource_group_name = var.xroad_resource_group_name
   location            = var.location
   allocation_method   = "Static"
-  domain_name_label   = "${var.organization_dns_fragment}-xroad-${var.zone}-${var.env}"
+  # domain_name_label   = "${var.organization_dns_fragment}-xroad-${var.zone}-${var.env}"
+  domain_name_label   = "${var.organization_dns_fragment}-xroad-${var.env}"
   sku                 = "Standard"
 
   tags = merge(var.tags, var.envTags)
