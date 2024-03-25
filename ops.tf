@@ -151,3 +151,10 @@ resource "azurerm_monitor_data_collection_rule" "dcr" {
   # Seems to be required to ensure law has Microsoft-InsightsMetrics table ready
   depends_on = [ azurerm_log_analytics_workspace.law ]
 }
+
+resource "azurerm_private_dns_zone" "xroad-psql" {
+  name                = "private.postgres.database.azure.com"
+  resource_group_name = azurerm_resource_group.ops.name
+
+  tags = local.tags
+}

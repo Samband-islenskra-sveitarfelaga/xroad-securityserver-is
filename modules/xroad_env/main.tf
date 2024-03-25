@@ -29,8 +29,11 @@ module "xroad-securityserver-1" {
   xrd_webadmin_password = var.xrd_webadmin_password
   data_collection_rule_id = var.data_collection_rule_id
   subnet_xroadvm_id = azurerm_subnet.snet-xroadvm.id
-  psql_fqdn = azurerm_postgresql_flexible_server.psql.fqdn
   automatic_update_reboot_time = var.automatic_update_reboot_time
+  subnet_psql_id = azurerm_subnet.snet-psql.id
+  psql_pdns_zone_id = var.psql_pdns_zone_id
+
+  depends_on = [azurerm_private_dns_zone_virtual_network_link.pdns-vnet-link]
 }
 
 module "xroad-securityserver-2" {
@@ -57,8 +60,10 @@ module "xroad-securityserver-2" {
   xrd_webadmin_password = var.xrd_webadmin_password
   data_collection_rule_id = var.data_collection_rule_id
   subnet_xroadvm_id = azurerm_subnet.snet-xroadvm.id
-  psql_fqdn = azurerm_postgresql_flexible_server.psql.fqdn
   automatic_update_reboot_time = var.automatic_update_reboot_time
+  subnet_psql_id = azurerm_subnet.snet-psql.id
+  psql_pdns_zone_id = var.psql_pdns_zone_id
 
   count                = var.env == "prd" ? 1 : 0
+  depends_on = [azurerm_private_dns_zone_virtual_network_link.pdns-vnet-link]
 }

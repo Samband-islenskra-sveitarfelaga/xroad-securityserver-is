@@ -35,16 +35,9 @@ resource "azurerm_subnet" "snet-psql" {
   ]
 }
 
-resource "azurerm_private_dns_zone" "xroad-psql" {
-  name                = "psql-${var.organization_dns_fragment}-xroad-${var.env}.private.postgres.database.azure.com"
-  resource_group_name = azurerm_resource_group.xroad.name
-
-  tags = merge(var.tags, var.envTags)
-}
-
 resource "azurerm_private_dns_zone_virtual_network_link" "pdns-vnet-link" {
   name                  = "psql-${var.organization_dns_fragment}-xroad-${var.env}.private.postgres.database.azure.com"
-  private_dns_zone_name = azurerm_private_dns_zone.xroad-psql.name
+  private_dns_zone_name = var.psql_pdns_zone
   virtual_network_id    = azurerm_virtual_network.vnet.id
   resource_group_name   = azurerm_resource_group.xroad.name
 }

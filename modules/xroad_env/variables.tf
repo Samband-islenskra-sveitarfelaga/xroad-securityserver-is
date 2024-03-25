@@ -100,3 +100,9 @@ variable "psqlSubnetAddressPrefix" {
 variable "automatic_update_reboot_time" {
   type = string
 }
+variable "psql_pdns_zone" {
+  type = string
+}
+variable "psql_pdns_zone_id" {
+  type = string
+}

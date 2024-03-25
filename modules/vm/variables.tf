@@ -76,10 +76,6 @@ variable "rsv_policy_id" {
   type = string
 }
 
-variable "psql_fqdn" {
-  type = string
-}
-
 variable "psql_password" {
   type = string
   sensitive = true
@@ -96,6 +92,14 @@ variable "subnet_xroadvm_id" {
   type = string
 }
 
+variable "subnet_psql_id" {
+  type = string
+}
+
 variable "automatic_update_reboot_time" {
+  type = string
+}
+
+variable "psql_pdns_zone_id" {
   type = string
 }

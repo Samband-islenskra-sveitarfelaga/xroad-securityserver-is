@@ -75,6 +75,8 @@ module "xroad_deployment_dev" {
   vmSubnetAddressPrefix = var.vmDevSubnetAddressPrefix
   psqlSubnetAddressPrefix = var.psqlDevSubnetAddressPrefix
   automatic_update_reboot_time = var.automatic_update_reboot_time
+  psql_pdns_zone = azurerm_private_dns_zone.xroad-psql.name
+  psql_pdns_zone_id = azurerm_private_dns_zone.xroad-psql.id
 
   env = "dev"
 }
@@ -108,6 +110,8 @@ module "xroad_deployment_prd" {
   vmSubnetAddressPrefix = var.vmPrdSubnetAddressPrefix
   psqlSubnetAddressPrefix = var.psqlPrdSubnetAddressPrefix
   automatic_update_reboot_time = var.automatic_update_reboot_time
+  psql_pdns_zone = azurerm_private_dns_zone.xroad-psql.name
+  psql_pdns_zone_id = azurerm_private_dns_zone.xroad-psql.id
 
   env = "prd"
   count = var.deployment_type == "both" ? 1 : 0

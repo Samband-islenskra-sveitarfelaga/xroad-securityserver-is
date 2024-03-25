@@ -39,7 +39,7 @@ echo "postgres.connection.password = POSTGRESQL_PASSWORD" | sudo tee -a /etc/xro
 
 # Created iirc using: sudo debconf-get-selections |grep 'xroad'
 cat <<EOF >> preseed.cfg
-d-i xroad-common/database-host string ${var.psql_fqdn}:5432
+d-i xroad-common/database-host string ${azurerm_postgresql_flexible_server.psql.fqdn}:5432
 d-i xroad-common/service-subject string /C=IS/O=${var.organization}/CN=${azurerm_public_ip.pip.fqdn}
 d-i xroad-common/proxy-ui-api-subject string /C=IS/O=${var.organization}/CN=${azurerm_public_ip.pip.fqdn}
 d-i xroad-common/username string xrd

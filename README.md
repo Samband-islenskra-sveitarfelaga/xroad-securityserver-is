@@ -1,3 +1,6 @@
+ToDo: separate db's per redundant prd server !
+  review pdns zones as well
+
 # Introduction 
 This repository is intended to get you up and running with an Icelandic X-Road SecurityServer in Azure.
 
@@ -8,6 +11,12 @@ Later on you can run these commands again from the same machine using "both" as 
 The following shows the end product in Azure of a full deployment for both dev/prd.
 
 <img src="xroad_ss_deployment.svg" width="1024" />
+
+## Pricing Estimate
+Estimated cost of Azure infrastructure costs with reservations in place.
+Costs can be assumed to be 10% higher when including logs and data transfer
+
+https://azure.com/e/6b47eb8c5a2d4ce690586fadf78d7da3
 
 ## Resource sizing
 The modules defaults provide for very modest compute and database resources. 
@@ -59,8 +68,6 @@ $psql_password = "xxx"
 $vm_username = "gunni"
 # SSH Public key authentication is preferred for the Ubuntu server, alternatively configure vm_password
 $ssh_pubkey = "ssh-rsa AAAABxxxxxxlongbase64string gunni"
-# Configure an email group (or user) to receive alerts from Azure around your VMs operation
-$alert_email = "xx@xxx.is"
 # Specify the networks or addresses that can access the web administration and ssh server
 $firewall_whitelist = '["1.1.1.0/29","1.0.0.1"]'
 # Configure the network addresses to use for X-Road. 

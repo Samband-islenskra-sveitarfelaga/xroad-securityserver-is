@@ -4,7 +4,8 @@ resource "azurerm_monitor_metric_alert" "db_avail_mem_bytes" {
   target_resource_location = var.location
   target_resource_type = "Microsoft.DBforPostgreSQL/flexibleServers"
   scopes              = [
-    azurerm_postgresql_flexible_server.psql.id
+    module.xroad-securityserver-1.psqlid,
+    module.xroad-securityserver-2[0].psqlid
   ]
   description         = "Alert when Percentage Memory exceeds 90%"
 
@@ -36,7 +37,8 @@ resource "azurerm_monitor_metric_alert" "db_percentage_cpu" {
   target_resource_location = var.location
   target_resource_type = "Microsoft.DBforPostgreSQL/flexibleServers"
   scopes              = [
-    azurerm_postgresql_flexible_server.psql.id
+    module.xroad-securityserver-1.psqlid,
+    module.xroad-securityserver-2[0].psqlid
   ]
   description         = "Alert when Percentage CPU exceeds 80%"
 
@@ -68,7 +70,8 @@ resource "azurerm_monitor_metric_alert" "db_availability" {
   target_resource_location = var.location
   target_resource_type = "Microsoft.DBforPostgreSQL/flexibleServers"
   scopes              = [
-    azurerm_postgresql_flexible_server.psql.id
+    module.xroad-securityserver-1.psqlid,
+    module.xroad-securityserver-2[0].psqlid
   ]
   description         = "Alert when PostgreSQL Availability is less than 1"
 
