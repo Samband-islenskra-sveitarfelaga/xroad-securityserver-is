@@ -39,7 +39,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "pdns-vnet-link" {
   name                  = "psql-${var.organization_dns_fragment}-xroad-${var.env}.private.postgres.database.azure.com"
   private_dns_zone_name = var.psql_pdns_zone
   virtual_network_id    = azurerm_virtual_network.vnet.id
-  resource_group_name   = azurerm_resource_group.xroad.name
+  resource_group_name   = var.ops_resource_group_name
 }
 
 resource "azurerm_network_security_group" "xroad_servers" {
