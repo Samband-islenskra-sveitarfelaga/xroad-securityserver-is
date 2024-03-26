@@ -1,9 +1,8 @@
 # xroad installation scripts create databases and users
 
 resource "azurerm_postgresql_flexible_server" "psql" {
-  # name                   = "psql-${var.organization_dns_fragment}-${var.zone}-xroad-${var.env}"
-  name                   = "psql-${var.organization_dns_fragment}-xroad-${var.env}"
-  resource_group_name   = var.xroad_resource_group_name
+  name                   = "psql-${var.organization_dns_fragment}-xroad-${var.zone}-${var.env}"
+  resource_group_name    = var.xroad_resource_group_name
   location               = var.location
   version                = "15"
   administrator_login    = "postgres"
