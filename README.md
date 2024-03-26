@@ -1,6 +1,3 @@
-ToDo: separate db's per redundant prd server !
-  review pdns zones as well
-
 # Introduction 
 This repository is intended to get you up and running with an Icelandic X-Road SecurityServer in Azure.
 
