@@ -10,17 +10,17 @@ The following shows the end product in Azure of a full deployment for both dev/p
 <img src="xroad_ss_deployment.svg" width="1024" />
 
 ## Pricing Estimate
-Estimated cost of Azure infrastructure costs with reservations in place.
+Estimated cost of Azure infrastructure costs with reservations in place. \
 Costs can be assumed to be 10% higher when including logs and data transfer
 
 https://azure.com/e/6b47eb8c5a2d4ce690586fadf78d7da3
 
 ## Resource sizing
-The modules defaults provide for very modest compute and database resources. 
+The modules defaults provide for very modest compute and database resources. \
 Scale-up as appropriate.
 
 ## HA / LB
-While the production environment is deployed in a fault-tolerant redundant fashion, it is not load balanced.
+While the production environment is deployed in a fault-tolerant redundant fashion, it is not load balanced. \
 To support exposing particularly popular X-Road APIs consider adding an Application Layer Gateway as load balancer as well as reviewing the documentation here.
 
 https://www.niis.org/blog/2018/6/25/balancing-the-load \
@@ -34,7 +34,7 @@ Owner permissions on that subscription
 Registration with island.is for Strauminn
 
 # Getting Started
-winget install -e --id Microsoft.AzureCLI
+winget install -e --id Microsoft.AzureCLI \
 winget install -e --id=Hashicorp.Terraform
 
 It is recommended to contact island.is early in the process but there are also more detailed instructions on the post-install registration process here \
