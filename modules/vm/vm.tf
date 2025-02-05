@@ -94,7 +94,7 @@ resource "azurerm_dev_test_global_vm_shutdown_schedule" "example" {
     enabled         = false
   }
 
-  count = var.env == "dev" ? 1 : 0
+  count = var.vm_autoshutdown ? 1 : 0
 }
 
 # Backups on prd

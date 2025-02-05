@@ -19,10 +19,14 @@ resource "azurerm_monitor_action_group" "ag" {
   resource_group_name = azurerm_resource_group.ops.name
   short_name          = "xroad"
 
-  email_receiver {
-    name = var.actiongroup_email
-    email_address = var.actiongroup_email
-    use_common_alert_schema = true
+  dynamic "email_receiver" {
+    for_each = var.actiongroup_emails
+
+    content {
+      name = email_receiver.value
+      email_address = email_receiver.value
+      use_common_alert_schema = true
+    }
   }
 }
 

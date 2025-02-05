@@ -33,7 +33,12 @@ variable "location" {
   default = "northeurope"
 }
 
-variable "psql_password" {
+variable "psql_password_dev" {
+  type = string
+  sensitive = true
+}
+
+variable "psql_password_prd" {
   type = string
   sensitive = true
 }
@@ -65,7 +70,13 @@ variable "psqlPrdSubnetAddressPrefix" {
   default = "10.83.143.0/24"
 }
 
-variable "xrd_webadmin_password" {
+variable "xrd_webadmin_password_dev" {
+  type = string
+  sensitive = true
+  description = "Password for the xroad web administration user. Username xrd."
+}
+
+variable "xrd_webadmin_password_prd" {
   type = string
   sensitive = true
   description = "Password for the xroad web administration user. Username xrd."
@@ -81,7 +92,14 @@ variable "ssh_pubkey" {
   default     = null
 }
 
-variable "vm_password" {
+variable "vm_password_dev" {
+  type        = string
+  description = "alternative to ssh pubkey authentication"
+  default     = null
+  sensitive = true
+}
+
+variable "vm_password_prd" {
   type        = string
   description = "alternative to ssh pubkey authentication"
   default     = null
@@ -98,8 +116,14 @@ variable "vm_sku" {
   default = "Standard_B2als_v2"
 }
 
-variable "actiongroup_email" {
-  type = string
+variable "vm_dev_autoshutdown" {
+  type    = bool
+  description = "Overrides default behavior of shutting down at 2300"
+  default = true
+}
+
+variable "actiongroup_emails" {
+  type = list(string)
   description = "Email address to send alerts to"
 }
 

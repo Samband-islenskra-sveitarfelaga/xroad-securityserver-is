@@ -47,7 +47,7 @@ Make sure to replace all variable values as applicable (and see variables.tf in 
 
 ```powershell
 $username = "executing@user.org"
-$actiongroup_email = "alertgroup@user.org"
+$actiongroup_emails = @{ "alertgroup@user.org" }
 $organization = "Well Advised ehf"
 $organization_dns_fragment = "wa"
 # Specify "both" to create/add both the dev and prd environment. 
@@ -59,22 +59,30 @@ az login
 az account set -s $azSubscriptionId
 
 # X-Road Web Administration Passowrd
-$xrd_webadmin_password = "xxx"
+$xrd_webadmin_password_dev = "xxx"
+$xrd_webadmin_password_prd = "xxx"
 # PostgreSql password
-$psql_password = "xxx"
+$psql_password_dev = "xxx"
+$psql_password_prd = "xxx"
 $vm_username = "gunni"
 # SSH Public key authentication is preferred for the Ubuntu server, alternatively configure vm_password
 $ssh_pubkey = "ssh-rsa AAAABxxxxxxlongbase64string gunni"
 # Specify the networks or addresses that can access the web administration and ssh server
 $firewall_whitelist = '["1.1.1.0/29","1.0.0.1"]'
-# Configure the network addresses to use for X-Road. 
-# Likely to require planning and consideration of current on-prem addressing.
+
+# Optional Params and their defaults
+$location = "northeurope"
+$vm_sku = "Standard_B2als_v2"
+$vm_dev_autoshutdown = "false"
+## Configure the network addresses to use for X-Road. 
+## Likely to require planning and consideration of current on-prem addressing.
 $vnetDevAddressPrefix = "10.83.140.0/23"
 $vmDevSubnetAddressPrefix = "10.83.140.0/24"
 $psqlDevSubnetAddressPrefix = "10.83.141.0/24"
 $vnetPrdAddressPrefix = "10.83.142.0/23"
 $vmPrdSubnetAddressPrefix = "10.83.142.0/24"
 $psqlPrdSubnetAddressPrefix = "10.83.143.0/24"
+$automatic_update_reboot_time = "04:00"
 
 terraform init
 terraform apply `
@@ -82,8 +90,10 @@ terraform apply `
   -var="organization=$organization" `
   -var="organization_dns_fragment=$organization_dns_fragment" `
   -var="deployment_type=$deployment_type" `
-  -var="xrd_webadmin_password=$xrd_webadmin_password" `
-  -var="psql_password=$psql_password" `
+  -var="xrd_webadmin_password_dev=$xrd_webadmin_password_dev" `
+  -var="psql_password_dev=$psql_password_dev" `
+  -var="xrd_webadmin_password_prd=$xrd_webadmin_password_prd" `
+  -var="psql_password_prd=$psql_password_prd" `
   -var="ssh_pubkey=$ssh_pubkey" `
   -var="vm_username=$vm_username" `
   -var="firewall_whitelist=$firewall_whitelist" `
@@ -94,7 +104,11 @@ terraform apply `
   -var="vmPrdSubnetAddressPrefix=$vmPrdSubnetAddressPrefix" `
   -var="firewall_whitelist=$firewall_whitelist" `
   -var="psqlPrdSubnetAddressPrefix=$psqlPrdSubnetAddressPrefix" `
-  -var="actiongroup_email=$actiongroup_email"
+  -var="actiongroup_emails=$actiongroup_emails" `
+  -var="location=$location" `
+  -var="vm_sku=$vm_sku" `
+  -var="vm_dev_autoshutdown=$vm_dev_autoshutdown" `
+  -var="automatic_update_reboot_time=$automatic_update_reboot_time"
 ```
 
 # X-Road Server post-install

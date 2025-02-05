@@ -103,3 +103,7 @@ variable "automatic_update_reboot_time" {
 variable "psql_pdns_zone_id" {
   type = string
 }
+
+variable "vm_autoshutdown" {
+  type    = bool
+}

@@ -32,6 +32,7 @@ module "xroad-securityserver-1" {
   automatic_update_reboot_time = var.automatic_update_reboot_time
   subnet_psql_id = azurerm_subnet.snet-psql.id
   psql_pdns_zone_id = var.psql_pdns_zone_id
+  vm_autoshutdown = var.vm_autoshutdown
 
   depends_on = [azurerm_private_dns_zone_virtual_network_link.pdns-vnet-link]
 }
@@ -63,6 +64,7 @@ module "xroad-securityserver-2" {
   automatic_update_reboot_time = var.automatic_update_reboot_time
   subnet_psql_id = azurerm_subnet.snet-psql.id
   psql_pdns_zone_id = var.psql_pdns_zone_id
+  vm_autoshutdown = var.vm_autoshutdown
 
   count                = var.env == "prd" ? 1 : 0
   depends_on = [azurerm_private_dns_zone_virtual_network_link.pdns-vnet-link]

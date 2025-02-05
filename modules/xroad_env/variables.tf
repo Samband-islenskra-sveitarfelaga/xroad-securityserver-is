@@ -106,3 +106,6 @@ variable "psql_pdns_zone" {
 variable "psql_pdns_zone_id" {
   type = string
 }
+variable "vm_autoshutdown" {
+  type    = bool
+}

@@ -59,14 +59,14 @@ module "xroad_deployment_dev" {
   location = var.location
   vm_username = var.vm_username
   ssh_pubkey = var.ssh_pubkey
-  vm_password = var.vm_password
+  vm_password = var.vm_password_dev
   firewall_whitelist = var.firewall_whitelist
   vm_sku = var.vm_sku
   ops_resource_group_name = azurerm_resource_group.ops.name
   rsv_name = azurerm_recovery_services_vault.rsv.name
   rsv_policy_id = azurerm_backup_policy_vm.xroad.id
-  psql_password = var.psql_password
-  xrd_webadmin_password = var.xrd_webadmin_password
+  psql_password = var.psql_password_dev
+  xrd_webadmin_password = var.xrd_webadmin_password_dev
   data_collection_rule_id = azurerm_monitor_data_collection_rule.dcr.id
   actiongroup_id = azurerm_monitor_action_group.ag.id
   log_analytics_workspace_name = azurerm_log_analytics_workspace.law.name
@@ -77,6 +77,7 @@ module "xroad_deployment_dev" {
   automatic_update_reboot_time = var.automatic_update_reboot_time
   psql_pdns_zone = azurerm_private_dns_zone.xroad-psql.name
   psql_pdns_zone_id = azurerm_private_dns_zone.xroad-psql.id
+  vm_autoshutdown = var.vm_dev_autoshutdown
 
   env = "dev"
 }
@@ -94,14 +95,14 @@ module "xroad_deployment_prd" {
   location = var.location
   vm_username = var.vm_username
   ssh_pubkey = var.ssh_pubkey
-  vm_password = var.vm_password
+  vm_password = var.vm_password_prd
   firewall_whitelist = var.firewall_whitelist
   vm_sku = var.vm_sku
   ops_resource_group_name = azurerm_resource_group.ops.name
   rsv_name = azurerm_recovery_services_vault.rsv.name
   rsv_policy_id = azurerm_backup_policy_vm.xroad.id
-  psql_password = var.psql_password
-  xrd_webadmin_password = var.xrd_webadmin_password
+  psql_password = var.psql_password_prd
+  xrd_webadmin_password = var.xrd_webadmin_password_prd
   data_collection_rule_id = azurerm_monitor_data_collection_rule.dcr.id
   actiongroup_id = azurerm_monitor_action_group.ag.id
   log_analytics_workspace_name = azurerm_log_analytics_workspace.law.name
@@ -112,6 +113,7 @@ module "xroad_deployment_prd" {
   automatic_update_reboot_time = var.automatic_update_reboot_time
   psql_pdns_zone = azurerm_private_dns_zone.xroad-psql.name
   psql_pdns_zone_id = azurerm_private_dns_zone.xroad-psql.id
+  vm_autoshutdown = false
 
   env = "prd"
   count = var.deployment_type == "both" ? 1 : 0
