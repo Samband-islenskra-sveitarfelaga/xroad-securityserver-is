@@ -3,7 +3,8 @@ locals {
 #!/bin/bash
 mkdir -p /opt/xroad
 cat <<SCRIPT_DATA > /opt/xroad/custom_script.sh
-sudo useradd -c "X-Road admin user" -s /usr/sbin/nologin -M -p $(openssl passwd -1 "XROAD_WEBADMIN_PASSWORD") "xrd"
+hashed_password=$(openssl passwd -5 "XROAD_WEBADMIN_PASSWORD")
+sudo useradd -c "X-Road admin user" -s /usr/sbin/nologin -M -p "$hashed_password" "xrd"
 echo is_IS.UTF-8 | sudo tee -a /etc/environment > /dev/null
 
 sudo apt-get install -y locales software-properties-common
@@ -53,6 +54,6 @@ sudo apt install -y xroad-securityserver-is
 
 # sudo systemctl list-units "xroad-*"
 SCRIPT_DATA
-chmod +x /opt/xroad/custom_script.sh
+chmod 700 /opt/xroad/custom_script.sh
 CUSTOM_DATA
 }
