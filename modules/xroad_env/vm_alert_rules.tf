@@ -7,14 +7,14 @@ resource "azurerm_monitor_metric_alert" "avail_mem_bytes" {
     module.xroad-securityserver-1.vmid,
     module.xroad-securityserver-2[0].vmid
   ]
-  description         = "Memory less than 1GB"
+  description         = "Memory less than 300mb"
 
   criteria {
     metric_namespace = "Microsoft.Compute/virtualMachines"
     metric_name      = "Available Memory Bytes"
     aggregation      = "Average"
     operator         = "LessThan"
-    threshold        = 1000000000
+    threshold        = 350000000
   }
 
   action {
