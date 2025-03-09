@@ -45,6 +45,7 @@ variable "ssh_pubkey" {
 
 variable "vm_password" {
   type        = string
+  ephemeral = true
   sensitive = true
 }
 
@@ -70,10 +71,12 @@ variable "rsv_policy_id" {
 
 variable "psql_password" {
   type = string
+  ephemeral = true
   sensitive = true
 }
 variable "xrd_webadmin_password" {
   type = string
+  ephemeral = true
   sensitive = true
 }
 variable "data_collection_rule_id" {
